@@ -16,7 +16,7 @@ public class PlaceClass implements Place {
 		this.counter += c; 
 	}
 	
-	public void removeConter(int c){
+	public void removeCounter(int c){
 		this.counter -= c;
 	} 
 

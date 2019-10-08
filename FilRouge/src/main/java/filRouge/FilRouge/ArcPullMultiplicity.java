@@ -1,6 +1,6 @@
 package filRouge.FilRouge;
 
-public class ArcPullMultiplicity implements ArcPull {
+public class ArcPullMultiplicity extends ArcPullAbstract {
     private int multiplicity = 1;
     private PlaceClass place;
 
@@ -10,14 +10,22 @@ public class ArcPullMultiplicity implements ArcPull {
     }
 
     public boolean active() {
-        return place.getCounter() >= multiplicity;
+        return getPlace().getCounter() >= multiplicity;
     }
 
     public void pullCounter() {
-        place.removeCounter(multiplicity);
+        getPlace().removeCounter(multiplicity);
     }
 
     public void setMultiplicity(int m) {
         this.multiplicity = m;
     }
+    
+    int getMultiplicity() {
+    	return multiplicity;
+    }
+
+	public PlaceClass getPlace() {
+		return place;
+	}
 }

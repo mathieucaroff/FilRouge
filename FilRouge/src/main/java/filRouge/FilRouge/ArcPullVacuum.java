@@ -1,6 +1,6 @@
 package filRouge.FilRouge;
 
-public class ArcPullVacuum implements ArcPull {
+public class ArcPullVacuum extends ArcPullAbstract {
     private PlaceClass place;
 
     ArcPullVacuum(PlaceClass place) {
@@ -16,7 +16,7 @@ public class ArcPullVacuum implements ArcPull {
     }
 
     @Override
-    public void setMultiplicity(int m) {
-        this.muliplicity = m;
+    public void setMultiplicity(int m) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
     }
 }
