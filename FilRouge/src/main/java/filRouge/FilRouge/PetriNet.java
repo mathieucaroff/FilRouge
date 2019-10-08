@@ -1,5 +1,6 @@
-package Group.Artifact;
+package filRouge.FilRouge;
 
 public interface PetriNet {
+	
 
 }

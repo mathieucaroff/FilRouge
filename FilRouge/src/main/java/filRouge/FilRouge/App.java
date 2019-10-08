@@ -1,4 +1,4 @@
-package Group.Artifact;
+package filRouge.FilRouge;
 
 /**
  * Hello world!
