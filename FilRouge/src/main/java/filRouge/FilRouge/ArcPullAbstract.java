@@ -8,12 +8,12 @@ public abstract class ArcPullAbstract implements ArcPull {
 	}
 	
 	public abstract boolean active();
-    public abstract void pullCounter();
-    public void setMultiplicity(int m) {
-        throw new UnsupportedOperationException();
-    }
+	public abstract void pullCounter();
+	public void setMultiplicity(int m) {
+		throw new UnsupportedOperationException();
+	}
 
-    public boolean placeEquals(PlaceClass other) {
+	public boolean placeEquals(PlaceClass other) {
 		return place == other;
 	}
 
