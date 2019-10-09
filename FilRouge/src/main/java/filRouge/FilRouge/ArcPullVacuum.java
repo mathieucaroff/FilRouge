@@ -1,18 +1,16 @@
 package filRouge.FilRouge;
 
 public class ArcPullVacuum extends ArcPullAbstract {
-    private PlaceClass place;
-
     ArcPullVacuum(PlaceClass place) {
-        this.place = place;
+        super(place);
     }
 
     public boolean active() {
-        return place.getCounter() > 0;
+        return getPlace().getCounter() > 0;
     }
 
     public void pullCounter() {
-        place.removeCounter(place.getCounter());
+    	getPlace().removeCounter(getPlace().getCounter());
     }
 
     @Override
