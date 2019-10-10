@@ -19,14 +19,12 @@ public class PetriNetClass implements PetriNet {
 		this.arcPushList = arcPushList;
 	}
 
-	@Override
 	public Place createPlace() {
 		PlaceClass place = new PlaceClass();
 		placeList.add(place);
 		return place;
 	}
 
-	@Override
 	public Transition createTransition() {
 		TransitionClass transition = new TransitionClass(new ArrayList<ArcPullAbstract>(), new ArrayList<ArcPushClass>());
 		transitionList.add(transition);
@@ -59,28 +57,24 @@ public class PetriNetClass implements PetriNet {
 		return arc;
 	}
 
-	@Override
 	public ArcPull createArcPullMultiplicity(Place p, Transition t, int multiplicity) throws RuntimeException {
 		return createArcPull(p, t,
 			(PlaceClass placeC) -> new ArcPullMultiplicity(placeC, multiplicity)
 		);
 	}
 
-	@Override
 	public ArcPull createArcPullZero(Place p, Transition t) {
 		return createArcPull(p, t,
 			(PlaceClass placeC) -> new ArcPullZero(placeC)
 		);
 	}
 
-	@Override
 	public ArcPull createArcPullVacuum(Place p, Transition t) {
 		return createArcPull(p, t,
 			(PlaceClass placeC) -> new ArcPullVacuum(placeC)
 		);
 	}
 
-	@Override
 	public void deleteArcPush(ArcPush arc) {
 		ArcPushClass arcC = arcPushCast(arc);
 		for (TransitionClass transition: transitionList) {
@@ -89,7 +83,6 @@ public class PetriNetClass implements PetriNet {
 		arcPushList.remove(arc);
 	}
 
-	@Override
 	public void deleteArcPull(ArcPull arc) {
 		ArcPullAbstract arcC = arcPullCast(arc);
 		for (TransitionClass transition: transitionList) {
@@ -98,7 +91,6 @@ public class PetriNetClass implements PetriNet {
 		arcPullList.remove(arc);
 	}
 
-	@Override
 	public void deletePlace(Place p) {
 		PlaceClass placeC = placeCast(p);
 		for (ArcPushClass arc: arcPushList) {
@@ -118,7 +110,6 @@ public class PetriNetClass implements PetriNet {
 		placeList.remove(placeC);
 	}
 
-	@Override
 	public void deleteTransition(Transition t) {
 		TransitionClass transitionC = transitionCast(t);
 		if (!transitionC.empty()) {
@@ -129,7 +120,6 @@ public class PetriNetClass implements PetriNet {
 		transitionList.remove(transitionC);
 	}
 
-	@Override
 	public void singleStep() throws RuntimeException {
 		ArrayList<TransitionClass> pullable = new ArrayList<TransitionClass>();
 		for (TransitionClass transition: transitionList) {
@@ -147,7 +137,6 @@ public class PetriNetClass implements PetriNet {
 		transition.pull();
 	}
 
-	@Override
 	public int loopStep() {
 		int counter = 0;
 		try {
