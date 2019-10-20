@@ -10,6 +10,11 @@ public class PetriNetClass implements PetriNet {
 	private ArrayList<ArcPushClass> arcPushList;
 	private ArrayList<ArcPullAbstract> arcPullList;
 
+	public PetriNetClass() {
+		this(new ArrayList<PlaceClass>(), new ArrayList<TransitionClass>(), new ArrayList<ArcPullAbstract>(),
+				new ArrayList<ArcPushClass>());
+	}
+
 	public PetriNetClass(ArrayList<PlaceClass> placeList, ArrayList<TransitionClass> transitionList,
 			ArrayList<ArcPullAbstract> arcPullList, ArrayList<ArcPushClass> arcPushList) {
 		super();
@@ -37,6 +42,7 @@ public class PetriNetClass implements PetriNet {
 		TransitionClass transitionC = transitionCast(transition);
 
 		ArcPushClass arc = new ArcPushClass(placeC, multiplicity);
+		arcPushList.add(arc);
 
 		transitionC.addArcPush(arc);
 
@@ -44,7 +50,7 @@ public class PetriNetClass implements PetriNet {
 	}
 
 	private interface ArcPullFactory {
-		ArcPullAbstract create(PlaceClass p);
+		ArcPullAbstract create(PlaceClass place);
 	}
 
 	private ArcPull createArcPull(Place place, Transition transition, ArcPullFactory b) {
@@ -52,6 +58,7 @@ public class PetriNetClass implements PetriNet {
 		TransitionClass transitionC = transitionCast(transition);
 
 		ArcPullAbstract arc = b.create(placeC);
+		arcPullList.add(arc);
 
 		transitionC.addArcPull(arc);
 
@@ -86,23 +93,24 @@ public class PetriNetClass implements PetriNet {
 		arcPullList.remove(arc);
 	}
 
-	public void deletePlace(Place p) {
-		PlaceClass placeC = placeCast(p);
+	public void deletePlace(Place place) {
+		PlaceClass placeC = placeCast(place);
+		RuntimeException stillInUse = new RuntimeException("Trying to remove a place that is still used by some arc.");
 		for (ArcPushClass arc : arcPushList) {
 			if (arc.placeEquals(placeC)) {
-				throw new RuntimeException("Trying to remove a place that is still used by some arc.");
+				throw stillInUse;
 			}
 		}
 		for (ArcPullAbstract arc : arcPullList) {
 			if (arc.placeEquals(placeC)) {
-				throw new RuntimeException("Trying to remove a place that is still used by some arc.");
+				throw stillInUse;
 			}
 		}
 		placeList.remove(placeC);
 	}
 
-	public void deleteTransition(Transition t) {
-		TransitionClass transitionC = transitionCast(t);
+	public void deleteTransition(Transition transition) {
+		TransitionClass transitionC = transitionCast(transition);
 		if (!transitionC.empty()) {
 			throw new RuntimeException("Trying to remove a transition that still has arcs attached.");
 		}
@@ -139,7 +147,7 @@ public class PetriNetClass implements PetriNet {
 	private PlaceClass placeCast(Place place) {
 		PlaceClass placeC;
 		if (!(place instanceof PlaceClass)) {
-			throw new RuntimeException("Unhandleded place implementation");
+			throw new RuntimeException("Unhandled place implementation");
 		} else {
 			if (!placeList.contains(place)) {
 				throw new RuntimeException("Unmanaged place");
@@ -154,7 +162,7 @@ public class PetriNetClass implements PetriNet {
 		TransitionClass transitionC;
 
 		if (!(transition instanceof TransitionClass)) {
-			throw new RuntimeException("Unhandleded transition implementation");
+			throw new RuntimeException("Unhandled transition implementation");
 		} else if (!transitionList.contains(transition)) {
 			throw new RuntimeException("Unmanaged transition");
 		} else {
@@ -167,7 +175,7 @@ public class PetriNetClass implements PetriNet {
 		ArcPushClass arcC;
 
 		if (!(arc instanceof ArcPushClass)) {
-			throw new RuntimeException("Unhnadled arcPush implementation");
+			throw new RuntimeException("Unhandled arcPush implementation");
 		} else if (!arcPushList.contains(arc)) {
 			throw new RuntimeException("Unmanaged arcPush");
 		} else {
@@ -181,7 +189,7 @@ public class PetriNetClass implements PetriNet {
 		ArcPullAbstract arcC;
 
 		if (!(arc instanceof ArcPullAbstract)) {
-			throw new RuntimeException("Unhnadled arcPull implementation");
+			throw new RuntimeException("Unhandled arcPull implementation");
 		} else if (!arcPullList.contains(arc)) {
 			throw new RuntimeException("Unmanaged arcPull");
 		} else {
