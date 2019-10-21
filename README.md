@@ -88,7 +88,8 @@ PetriNet.
 ### Modularity
 
 - [?] No class in the root package (unsure)
-- [x] ~~`package.info`~~ `package-info.java` describes each package responsability
+- [x] ~~`package.info`~~ `package-info.java` describes each package
+      responsability
 - [x] Each class responsibility is defined
 - [x] No public attributes
 - [x] Methods are short (except for tests)
@@ -96,7 +97,7 @@ PetriNet.
 ### Safety
 
 - [x] Methods protect themselves
-- [x] Each **public** method has at least a test
+- [x] All methods **exposed to the user** has at least one test
 - [x] Easy way to run all tests (`mvn test`)
 
 ### Evolutivity and Maintainability
@@ -107,4 +108,5 @@ PetriNet.
 
 ## Source management
 
-The source are managed using git. A copy of the development repository is available [on Github](https://github.com/mathieucaroff/FilRouge).
+The source are managed using git. A copy of the development repository is
+available [on Github](https://github.com/mathieucaroff/FilRouge).
