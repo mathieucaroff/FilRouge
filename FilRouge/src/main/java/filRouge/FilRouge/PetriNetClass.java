@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * This class has the following responsibilites:
+ * This class has the following responsibilities:
  *
  * - Allow building a Petri network - Check all user inputs while building or
  * modifying the network. Network objects cannot be reused. - Allow running one
@@ -71,41 +71,50 @@ class PetriNetClass implements PetriNet {
 
 	public void deleteArcPush(ArcPush arc) {
 		ArcPushClass arcC = arcPushCast(arc);
+
 		for (TransitionClass transition : transitionList) {
 			transition.maybeRemoveArcPush(arcC);
 		}
+
 		arcPushList.remove(arc);
 	}
 
 	public void deleteArcPull(ArcPull arc) {
 		ArcPullAbstract arcC = arcPullCast(arc);
+
 		for (TransitionClass transition : transitionList) {
 			transition.maybeRemoveArcPull(arcC);
 		}
+
 		arcPullList.remove(arc);
 	}
 
 	public void deletePlace(Place place) {
 		PlaceClass placeC = placeCast(place);
 		RuntimeException stillInUse = new RuntimeException("Trying to remove a place that is still used by some arc.");
+
 		for (ArcPushClass arc : arcPushList) {
 			if (arc.placeEquals(placeC)) {
 				throw stillInUse;
 			}
 		}
+
 		for (ArcPullAbstract arc : arcPullList) {
 			if (arc.placeEquals(placeC)) {
 				throw stillInUse;
 			}
 		}
+
 		placeList.remove(placeC);
 	}
 
 	public void deleteTransition(Transition transition) {
 		TransitionClass transitionC = transitionCast(transition);
+
 		if (!transitionC.empty()) {
 			throw new RuntimeException("Trying to remove a transition that still has arcs attached.");
 		}
+
 		transitionList.remove(transitionC);
 	}
 
@@ -116,9 +125,11 @@ class PetriNetClass implements PetriNet {
 				pullable.add(transition);
 			}
 		}
+
 		if (pullable.size() == 0) {
 			throw new RuntimeException("Trying to do a step while no transition is pullable.");
 		}
+
 		Random rand = new Random();
 		TransitionClass transition = pullable.get(rand.nextInt(pullable.size()));
 		transition.pull();
@@ -133,6 +144,7 @@ class PetriNetClass implements PetriNet {
 			}
 		} catch (RuntimeException e) {
 		}
+
 		return counter;
 	}
 
@@ -140,6 +152,15 @@ class PetriNetClass implements PetriNet {
 		ArcPullAbstract create(PlaceClass place);
 	}
 
+	/**
+	 * Create an arcPull with the given factory, and add it to the given transition
+	 * and the arcPullList
+	 * 
+	 * @param place
+	 * @param transition
+	 * @param b
+	 * @return the created arc
+	 */
 	private ArcPull createArcPull(Place place, Transition transition, ArcPullFactory b) {
 		PlaceClass placeC = placeCast(place);
 		TransitionClass transitionC = transitionCast(transition);
@@ -152,6 +173,12 @@ class PetriNetClass implements PetriNet {
 		return arc;
 	}
 
+	/**
+	 * Check that the given place is valid to the Petri network
+	 * 
+	 * @param place
+	 * @return the given place, downcasted to a PlaceClass
+	 */
 	private PlaceClass placeCast(Place place) {
 		PlaceClass placeC;
 		if (!(place instanceof PlaceClass)) {
@@ -163,9 +190,16 @@ class PetriNetClass implements PetriNet {
 				placeC = (PlaceClass) place;
 			}
 		}
+
 		return placeC;
 	}
 
+	/**
+	 * Check that the given transition is valid to the Petri network
+	 * 
+	 * @param transition the transition to check and cast
+	 * @return the given transition, downcasted to a TransitionClass
+	 */
 	private TransitionClass transitionCast(Transition transition) {
 		TransitionClass transitionC;
 
@@ -176,9 +210,16 @@ class PetriNetClass implements PetriNet {
 		} else {
 			transitionC = (TransitionClass) transition;
 		}
+
 		return transitionC;
 	}
 
+	/**
+	 * Check that the given arcPush is valid to the Petri network
+	 * 
+	 * @param arc the arcPush to check and downcast
+	 * @return the given arcPush, downcasted to an ArcPushClass
+	 */
 	private ArcPushClass arcPushCast(ArcPush arc) {
 		ArcPushClass arcC;
 
@@ -193,6 +234,12 @@ class PetriNetClass implements PetriNet {
 		return arcC;
 	}
 
+	/**
+	 * Check that the given arcPull is valid to the Petri network
+	 * 
+	 * @param arc the arcPull to check and downcast
+	 * @return the given arcPull, downcasted to an ArcPushAbstract
+	 */
 	private ArcPullAbstract arcPullCast(ArcPull arc) {
 		ArcPullAbstract arcC;
 

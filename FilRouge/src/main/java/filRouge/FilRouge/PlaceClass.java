@@ -9,6 +9,10 @@ class PlaceClass implements Place {
 
 	private int counter;
 
+	/**
+	 * 
+	 * @param counter the counter is the number of tokens contained in the Place
+	 */
 	PlaceClass(int counter) {
 		super();
 		this.counter = counter;
@@ -22,6 +26,11 @@ class PlaceClass implements Place {
 		this.counter = c;
 	}
 
+	/**
+	 * Increase the counter of the place by the given value
+	 * 
+	 * @param c
+	 */
 	public void addCounter(int c) {
 		this.counter += c;
 	}
