@@ -10,6 +10,7 @@ The project has the structure of a Maven project, with root at `FilRouge`.
 
 - Building
 - Documentation
+- Design choices
 - Tests
 - Self evaluation
   - Comments
@@ -44,6 +45,18 @@ The interfaces visible to the user are the following:
 In the diagrams `FilRouge/diagram/petrinet-class.ucls` and
 `doc/uml/2019-10-21-petrinet-class.pdf`, the class and the 5 interfaces
 available to the user are to the left side.
+
+## Design choices
+
+Since we do not have a client to clarify the specification, we had to make
+design choices. In particular:
+
+- We decided to allow pulling a transition whose pullability critera are not
+  fulfilled
+- We decided to allow places to hold a negative number of counters
+
+If these behaviors are undesired, we are ready to make changes according to the
+new specification information the client brings.
 
 ## Tests
 
