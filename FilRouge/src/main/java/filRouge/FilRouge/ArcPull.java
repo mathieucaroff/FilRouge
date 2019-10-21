@@ -6,5 +6,13 @@ package filRouge.FilRouge;
  */
 
 public interface ArcPull {
-	void setMultiplicity(int m) throws UnsupportedOperationException;
+	/**
+	 * Set the multiplicity of the arc.
+	 * 
+	 * @param multiplicity the new value to set
+	 * @throws UnsupportedOperationException ArcPullMultiplicity supports setting
+	 *                                       multiplicity but ArcPullVacuum and
+	 *                                       ArcPullZero do not.
+	 */
+	void setMultiplicity(int multiplicity) throws UnsupportedOperationException;
 }

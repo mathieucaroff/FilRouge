@@ -6,5 +6,12 @@ package filRouge.FilRouge;
  */
 
 public interface ArcPush {
-	void setMultiplicity(int m) throws UnsupportedOperationException;
+	/**
+	 * Set the multiplicity of the arc.
+	 * 
+	 * @param multiplicity the new value to set
+	 * @throws UnsupportedOperationException ArcPush supports setting multiplicity
+	 *                                       and will not throw
+	 */
+	void setMultiplicity(int multiplicity) throws UnsupportedOperationException;
 }

@@ -5,8 +5,15 @@ package filRouge.FilRouge;
  * Transition.
  */
 
-
 public interface Transition {
+	/**
+	 * @return whether the transition can be pulled (fired), i.e. whether the
+	 *         transition is active
+	 */
 	boolean pullable();
+
+	/**
+	 * Fire the transition, by running all connected arcs actions
+	 */
 	void pull();
 }

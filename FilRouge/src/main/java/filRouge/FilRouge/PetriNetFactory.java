@@ -7,6 +7,11 @@ package filRouge.FilRouge;
 
 public final class PetriNetFactory {
 
+	/**
+	 * Factory to create PetriNet instances
+	 * 
+	 * @return a brand new PetriNet instance
+	 */
 	public PetriNet createPetriNet() {
 		return new PetriNetClass();
 	}

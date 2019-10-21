@@ -75,7 +75,7 @@ PetriNet.
 
 - [x] Code written in english
 - [x] Comments all in the same language
-- [ ] Javadoc on public methods
+- [x] Javadoc on all exposed methods
 - [x] Comments dedicated to maintainers
 
 ### Style and conventions
