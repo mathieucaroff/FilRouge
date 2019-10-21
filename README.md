@@ -102,7 +102,7 @@ PetriNet.
 ### Evolutivity and Maintainability
 
 - [x] Explicit imports
-- [ ] No magic constants
+- [x] No magic constants (no constants at all, by good design)
 - [x] Factorized code (as much as reasonable)
 
 ## Source management
