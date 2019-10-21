@@ -11,7 +11,7 @@ class TransitionClass implements Transition {
 	private ArrayList<ArcPullAbstract> pull;
 	private ArrayList<ArcPushClass> push;
 
-	public TransitionClass(ArrayList<ArcPullAbstract> pull, ArrayList<ArcPushClass> push) {
+	TransitionClass(ArrayList<ArcPullAbstract> pull, ArrayList<ArcPushClass> push) {
 		super();
 		this.pull = pull;
 		this.push = push;

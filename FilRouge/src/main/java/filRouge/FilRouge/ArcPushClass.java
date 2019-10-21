@@ -1,15 +1,15 @@
 package filRouge.FilRouge;
 
 /**
- * This class defines the execution of the ArcPush operations, and implement
- * the methods needed by TransitionClass.
+ * This class defines the execution of the ArcPush operations, and implement the
+ * methods needed by TransitionClass.
  */
 
 class ArcPushClass implements ArcPush {
 	private int multiplicity;
 	private PlaceClass place;
 
-	public ArcPushClass(PlaceClass p, int m) {
+	ArcPushClass(PlaceClass p, int m) {
 		this.multiplicity = m;
 		this.place = p;
 	}

@@ -9,7 +9,7 @@ class PlaceClass implements Place {
 
 	private int counter;
 
-	public PlaceClass(int counter) {
+	PlaceClass(int counter) {
 		super();
 		this.counter = counter;
 	}

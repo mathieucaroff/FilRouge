@@ -6,12 +6,10 @@ import java.util.Random;
 /**
  * This class has the following responsibilites:
  *
- * - Allow building a Petri network
- * - Check all user inputs while building or modifying the network. Network
- *   objects cannot be reused.
- * - Allow running one step of Petri network.
- * - Allow running a Petri network until no transition is active anymore, or
- *   if it never happens, run it forever.
+ * - Allow building a Petri network - Check all user inputs while building or
+ * modifying the network. Network objects cannot be reused. - Allow running one
+ * step of Petri network. - Allow running a Petri network until no transition is
+ * active anymore, or if it never happens, run it forever.
  */
 class PetriNetClass implements PetriNet {
 
@@ -20,7 +18,7 @@ class PetriNetClass implements PetriNet {
 	private ArrayList<ArcPushClass> arcPushList;
 	private ArrayList<ArcPullAbstract> arcPullList;
 
-	public PetriNetClass() {
+	PetriNetClass() {
 		this(new ArrayList<PlaceClass>(), new ArrayList<TransitionClass>(), new ArrayList<ArcPullAbstract>(),
 				new ArrayList<ArcPushClass>());
 	}
@@ -55,22 +53,6 @@ class PetriNetClass implements PetriNet {
 		arcPushList.add(arc);
 
 		transitionC.addArcPush(arc);
-
-		return arc;
-	}
-
-	private interface ArcPullFactory {
-		ArcPullAbstract create(PlaceClass place);
-	}
-
-	private ArcPull createArcPull(Place place, Transition transition, ArcPullFactory b) {
-		PlaceClass placeC = placeCast(place);
-		TransitionClass transitionC = transitionCast(transition);
-
-		ArcPullAbstract arc = b.create(placeC);
-		arcPullList.add(arc);
-
-		transitionC.addArcPull(arc);
 
 		return arc;
 	}
@@ -152,6 +134,22 @@ class PetriNetClass implements PetriNet {
 		} catch (RuntimeException e) {
 		}
 		return counter;
+	}
+
+	private interface ArcPullFactory {
+		ArcPullAbstract create(PlaceClass place);
+	}
+
+	private ArcPull createArcPull(Place place, Transition transition, ArcPullFactory b) {
+		PlaceClass placeC = placeCast(place);
+		TransitionClass transitionC = transitionCast(transition);
+
+		ArcPullAbstract arc = b.create(placeC);
+		arcPullList.add(arc);
+
+		transitionC.addArcPull(arc);
+
+		return arc;
 	}
 
 	private PlaceClass placeCast(Place place) {

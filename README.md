@@ -82,7 +82,7 @@ PetriNet.
 
 - [x] Homogenous indentation (tabs)
 - [x] UpperCamelCase for Classes and lowerCamelCase for variables
-- [ ] Method are orderd
+- [x] Methods are orderd
 - [x] Names are meaningful (NB: subjective criterion)
 
 ### Modularity
