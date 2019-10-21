@@ -1,5 +1,12 @@
 package filRouge.FilRouge;
 
+/**
+ * This class defines the way operations are handled for "vacuum" pull arcs.
+ *
+ * When the transition of a Vacuum Pull Arc is fired, the vacuum pull arc will
+ * consume all counters from the place it's linked to.
+ */
+
 class ArcPullVacuum extends ArcPullAbstract {
 	ArcPullVacuum(PlaceClass place) {
 		super(place);

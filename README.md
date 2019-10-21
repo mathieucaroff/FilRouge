@@ -76,7 +76,7 @@ PetriNet.
 - [x] Code written in english
 - [x] Comments all in the same language
 - [ ] Javadoc on public methods
-- [ ] Comments dedicated to maintainers
+- [x] Comments dedicated to maintainers
 
 ### Style and conventions
 
@@ -89,7 +89,7 @@ PetriNet.
 
 - [?] No class in the root package (unsure)
 - [x] ~~`package.info`~~ `package-info.java` describes each package responsability
-- [ ] Each class responsibility is defined
+- [x] Each class responsibility is defined
 - [x] No public attributes
 - [x] Methods are short (except for tests)
 

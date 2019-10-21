@@ -1,5 +1,8 @@
 package filRouge.FilRouge;
 
+/**
+ * This class defines the way operations are handled for basic pull arcs
+ */
 class ArcPullMultiplicity extends ArcPullAbstract {
 	private int multiplicity = 1;
 

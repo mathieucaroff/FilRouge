@@ -1,5 +1,10 @@
 package filRouge.FilRouge;
 
+/**
+ * This class manages read and write operations permitted on the value of a
+ * place.
+ */
+
 class PlaceClass implements Place {
 
 	private int counter;
@@ -22,6 +27,12 @@ class PlaceClass implements Place {
 	}
 
 	public void removeCounter(int c) {
+		/*
+		 * Note for maintainers:
+		 * 
+		 * No verification that the counter is finally positive here. See the Design
+		 * choice** section of the project's README file.
+		 */
 		this.counter -= c;
 	}
 

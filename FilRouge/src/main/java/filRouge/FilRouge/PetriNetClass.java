@@ -3,6 +3,16 @@ package filRouge.FilRouge;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class has the following responsibilites:
+ *
+ * - Allow building a Petri network
+ * - Check all user inputs while building or modifying the network. Network
+ *   objects cannot be reused.
+ * - Allow running one step of Petri network.
+ * - Allow running a Petri network until no transition is active anymore, or
+ *   if it never happens, run it forever.
+ */
 class PetriNetClass implements PetriNet {
 
 	private ArrayList<PlaceClass> placeList;

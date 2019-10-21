@@ -1,5 +1,11 @@
 package filRouge.FilRouge;
 
+/**
+ * This interface defines the way for the user to build a Petri network from
+ * places, transitions and arcs of various kinds. It also allows to run one or
+ * several steps of the Petri network.
+ */
+
 public interface PetriNet {
 	Place createPlace();
 	Transition createTransition();

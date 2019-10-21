@@ -2,6 +2,11 @@ package filRouge.FilRouge;
 
 import java.util.ArrayList;
 
+/**
+ * The transitions have the responsability to hold the arcs, both entering and
+ * leaving the transition. They allow adding and removing arcs. They allow
+ * checking for pullability, and they allow pulling.
+ */
 class TransitionClass implements Transition {
 	private ArrayList<ArcPullAbstract> pull;
 	private ArrayList<ArcPushClass> push;
@@ -24,6 +29,12 @@ class TransitionClass implements Transition {
 	}
 
 	public void pull() {
+		/*
+		 * Note for maintainers:
+		 * 
+		 * No pullability verification here. See the **Design choice** section of the
+		 * project's README file.
+		 */
 		for (ArcPullAbstract arc : pull) {
 			arc.pullCounter();
 		}

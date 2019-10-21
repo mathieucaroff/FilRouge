@@ -1,5 +1,10 @@
 package filRouge.FilRouge;
 
+/**
+ * This class holds the generic operations on ArcPull objects and what can
+ * be factorized between all children classes.
+ */
+
 abstract class ArcPullAbstract implements ArcPull {
 	private PlaceClass place;
 
@@ -19,7 +24,7 @@ abstract class ArcPullAbstract implements ArcPull {
 		return place == other;
 	}
 
-	protected PlaceClass getPlace() {
+	PlaceClass getPlace() {
 		return place;
 	}
 }
