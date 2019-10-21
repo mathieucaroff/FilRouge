@@ -1,6 +1,6 @@
 package filRouge.FilRouge;
 
-public class ArcPushClass implements ArcPush {
+class ArcPushClass implements ArcPush {
 	private int multiplicity;
 	private PlaceClass place;
 

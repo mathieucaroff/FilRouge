@@ -1,6 +1,6 @@
 package filRouge.FilRouge;
 
-public class PlaceClass implements Place {
+class PlaceClass implements Place {
 
 	private int counter;
 

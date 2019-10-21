@@ -1,6 +1,6 @@
 package filRouge.FilRouge;
 
-public class ArcPullVacuum extends ArcPullAbstract {
+class ArcPullVacuum extends ArcPullAbstract {
 	ArcPullVacuum(PlaceClass place) {
 		super(place);
 	}

@@ -1,6 +1,6 @@
 package filRouge.FilRouge;
 
-public class ArcPullZero extends ArcPullMultiplicity {
+class ArcPullZero extends ArcPullMultiplicity {
 	ArcPullZero(PlaceClass place) {
 		super(place, 0);
 	}

@@ -1,6 +1,6 @@
 package filRouge.FilRouge;
 
-public class ArcPullMultiplicity extends ArcPullAbstract {
+class ArcPullMultiplicity extends ArcPullAbstract {
 	private int multiplicity = 1;
 
 	ArcPullMultiplicity(PlaceClass place, int multiplicity) {

@@ -2,7 +2,7 @@ package filRouge.FilRouge;
 
 import java.util.ArrayList;
 
-public class TransitionClass implements Transition {
+class TransitionClass implements Transition {
 	private ArrayList<ArcPullAbstract> pull;
 	private ArrayList<ArcPushClass> push;
 
@@ -14,7 +14,7 @@ public class TransitionClass implements Transition {
 
 	public boolean pullable() {
 		boolean result = true;
-		for (ArcPullAbstract arc: pull) {
+		for (ArcPullAbstract arc : pull) {
 			if (!arc.active()) {
 				result = false;
 				break;
@@ -24,10 +24,10 @@ public class TransitionClass implements Transition {
 	}
 
 	public void pull() {
-		for(ArcPullAbstract arc: pull) {
+		for (ArcPullAbstract arc : pull) {
 			arc.pullCounter();
 		}
-		for (ArcPushClass arc: push) {
+		for (ArcPushClass arc : push) {
 			arc.pushCounter();
 		}
 	}
@@ -47,7 +47,7 @@ public class TransitionClass implements Transition {
 	public void maybeRemoveArcPush(ArcPushClass arc) {
 		push.remove(arc);
 	}
-	
+
 	public void maybeRemoveArcPull(ArcPullAbstract arc) {
 		pull.remove(arc);
 	}

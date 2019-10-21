@@ -3,7 +3,7 @@ package filRouge.FilRouge;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class PetriNetClass implements PetriNet {
+class PetriNetClass implements PetriNet {
 
 	private ArrayList<PlaceClass> placeList;
 	private ArrayList<TransitionClass> transitionList;
