@@ -42,9 +42,10 @@ The interfaces visible to the user are the following:
 - ArcPull
 - ArcPush
 
-In the diagrams `FilRouge/diagram/petrinet-class.ucls` and
-`doc/uml/2019-10-21-petrinet-class.pdf`, the class and the 5 interfaces
-available to the user are to the left side.
+The methods of the class and the interfaces have been documented.
+
+In the class diagram `doc/uml/2019-10-21-petrinet-class.pdf`
+(exported from `FilRouge/diagram/petrinet-class.ucls`), the class and the 5 interfaces available to the user are to the left side.
 
 ## Design choices
 
@@ -68,6 +69,39 @@ The following classes have unit tests:
 
 The file "PetriNetClassTest" contains a large suite of functional tests of the
 PetriNet.
+
+## Glossary
+
+The following terms are used in the project:
+
+Place:
+A node of the Petri network which can contain a number of tokens
+
+Counter:
+The number of tokens contained by a place
+
+Transition:
+A node of the Petri network which can be fired (pulled).
+
+Pulling:
+A synonyme of fireing. It can be used both for a transition or for an arc.
+
+Arc:
+In a Petri network, arcs can only link one place and one transition together.
+Arcs are oriented, see "ArcPull" and "ArcPush"
+
+ArcPull:
+An arc, oriented from a place to a transition. Firing an ArcPull will remove
+tokens from the place.
+
+ArcPush:
+An arc, oriented from a transtition to a place. Firing an ArcPush will add
+tokens to their place.
+
+Multiplicity (of an arc):
+The "value" of the arc. The number of token it takes or adds to the place it's
+linked to when it is fired. Note however that ArcPullVacuum and ArcPullZero
+do not have multiplicities: They follow their own logic
 
 ## Self evaluation
 
