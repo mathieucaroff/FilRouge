@@ -75,7 +75,7 @@ PetriNet.
 ### Modularity
 
 - [?] No class in the root package (unsure)
-- [ ] ~~`package.info`~~ `package-info.java` describes each package responsability
+- [x] ~~`package.info`~~ `package-info.java` describes each package responsability
 - [ ] Each class responsibility is defined
 - [x] No public attributes
 - [x] Methods are short (except for tests)
